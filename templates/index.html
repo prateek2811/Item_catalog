@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Catalog Project</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'style.css')}}" />
+    </head>
+    <body class="page">
+        <main class="main">
+            <header class="header">
+                <h1>WELCOME TO ITEM CATALOG</h1>
+                <a href="{{url_for('logIn')}}"><button class="btn">Log In</button></a>
+            </header>
+            <div class="content">
+                <section class="catagory">
+                    <span class="heading">Manufecturer</span>
+                    <ul>{% for manuf in manufacturer %}
+                        <li><a href="{{url_for('viewPublicCars' , manufacturer = manuf.manufacturer)}}" class="cat-list">{{manuf.manufecturer}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </section>
+                <section class="items">
+                    <span class="heading">Latest Cars</span>
+                    <ul>{% for lat in latestCars %}
+                        <li><a href="{{url_for('viewPublicCars' , car = lat.name, manufacturer = lat.manufacturer)}}" class="cat-list">{{lat.name}}&nbsp;&nbsp;
+                            (manufactured by {{lat.manufacturer}})</a></li>
+                            {% endfor %}
+                    </ul>
+                </section>
+            </div>
+            <footer class="foot">
+                <span class="heading">Developed by Prteek Shrivastava</span>
+            </footer>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Car Details
+        </title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'style.css')}}" />
+    </head>
+    <body class="page">
+        <main class="main">
+        <header class="header">
+            <h1>
+                WELCOME TO ITEM CATALOG
+            </h1>
+            <a href="{{url_for('logIn')}}"><button class="btn">Log In</button></a>
+        </header>
+        <div class="sontent">
+            <section class="category">
+                <span class="heading">Manufacturer</span>
+                <ul>{% for cat in manufacturer %}
+                    <li><a href="{{url_for('viewPublicCars', manufacturer = cat.manufacture)}}" class="cat-list">{{cat.manufacturer}}</a></li>
+                    {% endfor %}
+                </ul>
+            </section>
+            <section class="items">
+                <span class="heading">{{carD.name}} Details (manufactured by {{carD.manufacturer}})</span>
+                <p class="details">{{carD.description}}</p></br></br>
+            </section>
+        </div>
+        <footer class="foot">
+            <span class="heading">Developed by Prateek Shrivastava</span>
+        </footer>
+       </main>
+    </body>
+</html>
